@@ -1,4 +1,7 @@
 package com.saferapps.sabiondo.app.data.repository
 
-class AuthResult {
-}
+data class AuthResult(
+    val uid: String,
+    val name: String,
+    val role: String?
+)

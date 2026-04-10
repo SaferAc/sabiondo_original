@@ -1,4 +1,9 @@
 package com.saferapps.sabiondo.app.screens.home
 
-class HomeScreen {
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+
+@Composable
+fun HomeScreen() {
+    Text("Home nueva 🎉")
 }

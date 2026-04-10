@@ -1,4 +1,4 @@
-package com.saferapps.sabiondo.app
+package com.saferapps.sabiondo.app.theme
 
 import androidx.compose.ui.graphics.Color
 
