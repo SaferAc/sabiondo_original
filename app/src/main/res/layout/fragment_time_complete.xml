@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayoutcomplete2"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_fileName="fireworks.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        android:foregroundGravity="center" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/drop_shadow" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/divider2">
+
+
+        <RelativeLayout
+            android:id="@+id/top_panel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtLevel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="16dp"
+android:text="Sabiondo"
+                android:fontFamily="@font/rock_salt"
+
+                android:textSize="28dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/coin_layout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/coin2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Monedas: "
+
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/coin_count2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="00"
+
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/score_layout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/coin_layout2"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/score2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Puntuación: "
+
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtScore2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="00"
+
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/txt_result_title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_panel2"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="!Nuevo Record! \n !Felicidades!"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+
+            android:fontFamily="@font/rock_salt"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/result_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/txt_result_title2"
+            android:layout_marginBottom="5dp"
+            >
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:lottie_fileName="starcorrect.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"
+                />
+
+            </LinearLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/coinslayout2"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/result_layout2">
+            <LinearLayout
+                android:id="@+id/layoutrecords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/total_question2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Preguntas: "
+                    android:textSize="24dp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/timerecord2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textStyle="bold"
+                    android:text="Tiempo: "
+                    android:textSize="24dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/xmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutrecords"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="-2dp"
+                android:layout_toEndOf="@+id/anim_coins"
+                android:fontFamily="@font/rock_salt"
+                android:text="X"
+                android:textSize="30sp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/anim_coins"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/layoutrecords"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="-1dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="coin.json"
+                app:lottie_loop="true" />
+
+            <TextView
+                android:id="@+id/numcoins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutrecords"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="38dp"
+                android:layout_marginTop="0dp"
+                android:layout_toEndOf="@+id/xmark"
+                android:fontFamily="@font/rock_salt"
+                android:text="11"
+                android:textSize="30dp" />
+
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coinslayout2"
+            >
+
+            <LinearLayout
+                android:id="@+id/button_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_playagain2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/fui_linkColor"
+                    app:strokeWidth="2dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/right_gradient"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:background="@color/transparent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/btn_playagaintxt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:text="@string/play_again"
+                                android:scrollHorizontally="true"
+                                android:textSize="18sp"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_review2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/fui_linkColor"
+                    app:strokeWidth="2dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:background="@color/transparent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:text="@string/review_answer"
+                                android:scrollHorizontally="true"
+                                android:textSize="18sp"
+                               />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_share2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/fui_linkColor"
+                    app:strokeWidth="2dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_gradient">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:background="@color/transparent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:text="@string/share_score"
+                                android:scrollHorizontally="true"
+                                android:textSize="18sp"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+</RelativeLayout>

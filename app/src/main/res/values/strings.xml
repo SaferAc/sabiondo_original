@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Sabiondo</string>
+    <string name="completed">Felicidades! \n Completaste el Nivel.</string>
+    <string name="not_completed">Oops! \n Intentalo otra vez! </string>
+    <string name="setting_heading">Ajustes </string>
+    <string name="select_level">Nivel</string>
+    <string name="more_app">Otras apps</string>
+    <string name="sound">Sonido</string>
+    <string name="share_app">Compartir</string>
+    <string name="vibration">Vibración</string>
+    <string name="rateapp">Calificanos    </string>
+    <string name="bg_music">Musica de fondo</string>
+    <string name="coin_dialog_title">Te faltan monedas ! </string>
+    <string name="share_via">Comparte!</string>
+    <string name="share_subject">Me gusta Sabiondo</string>
+    <string name="next_play">Siguiente Nivel</string>
+    <string name="play_again">Jugar otra vez</string>
+    <string name="quite">Inicio</string>
+    <string name="achievement">Insignias</string>
+    <string name="review_answer">Revisa tus Respuestas</string>
+    <string name="share_score">Comparte tus logros</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="play_next">Juega otra vez</string>
+    <string name="step3">Compara tus resultados con otros jugadores</string>
+    <string name="step4">Logros</string>
+    <string name="lets_play">Vamos a jugar!!</string>
+    <string name="achievements_exception">Hubo un problema.</string>
+    <string name="players_exception">Intenta más tarde</string>
+    <string name="status_exception_error">%1$s (status %2$d). %3$s.</string>
+    <string name="coin_message">Necesitas al menos 4 monedas.</string>
+    <string name="coin_message_sub">Mira un video y obten monedas gratis</string>
+    <string name="skip_btn_message">SALTAR, NO NECESITO MONEDAS</string>
+    <string name="leaderboards_exception">Hubo un problema al comunicarse con la clasificación.</string>
+    <string name="swippe_to_pick_level">Desliza para elegir grado</string>
+    <string name="leaderboard_sabiondos" translatable="false">CgkI-67UzYISEAIQNg</string>
+
+    <string name="admob_Rewarded_Video_Ads">ca-app-pub-7878826314411715/9777565632</string>
+    <string name="admob_interstitial_id">ca-app-pub-7878826314411715/9820769998</string>
+    <string name="admob_banner_id">ca-app-pub-7878826314411715/3755108411</string>>
+    <string name="nivel">Nivel</string>
+    <string name="level_progress">1/6</string>
+    <string name="_00">00</string>
+    <string name="opt_a_letter">A</string>
+    <string name="done">Done</string>
+
+
+    <!--<string name="admob_Rewarded_Video_Ads">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="admob_interstitial_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="admob_banner_id">	ca-app-pub-3940256099942544/6300978111</string>-->
+
+
+    <string name="d">D</string>
+    <string name="c">C</string>
+    <string name="b">B</string>
+    <string name="time">0:00.0</string>
+    <string name="no_conection">No hay conexión a Internet</string>
+    <array name="operation_icon">
+        <item>"brush"</item>
+        <item>"eraser"</item>
+        <item>"color_pallet"</item>
+        <item>"cancel"</item>
+        <item>"text_input"</item>
+        <item>"undo"</item>
+        <item>"circle"</item>
+        <item>"square"</item>
+        <item>"oval"</item>
+        <item>"gallery"</item>
+        <item>"save"</item>
+    </array>
+    <string name="file_name">"File name"</string>
+    <string name="Instructions">El objetivo de este material es proporcionar un repaso de los contenidos vistos durante el ciclo escolar a los alumnos de educación básica. \n\n
+        \t1. Para iniciar debe dar clic en el botón Rojo y aceptar los permisos. * \n\t
+        2. Se presentará una pantalla para seleccionar un grado, deslice y de clic en el botón central para iniciar. \n\t
+        3. Se le mostrará una lista de niveles los cuales deberá contestar con al menos el 60% de las respuestas correctas \n\t
+        4. Al finalizar cada nivel se le proporcionan tres botones: \n\n
+        “Compartir Logros”, con el que podrá enviar una imagen de los resultados obtenidos, mediante diversas redes sociales.\n \n
+        “Revisar Respuestas”, con este botón podrá revisar que preguntas fueron contestadas correctamente. \n\n
+        “Siguiente Nivel”, continua el juego.\n\n
+        Los niveles no están distribuidos de acuerdo con los trimestres ya que se busca que el alumno y el docente detecten las áreas de oportunidad, y los contenidos en los que es necesario realizar una revisión.
+        \n\nSi ya completaste tu grado, revisa los grados siguientes, siempre hay algo nuevo que puedes estudiar.
+        \n\n“Creador de Niveles”, en esta área el docente previamente registrado podrá crear cuestionarios para compartirlos con la comunidad, los niveles son abiertos y cualquier usuario podrá hacer uso de estos para jugar, se dividen por grados y trimestres, cada uno cuenta con un titulo el cual pretende evidenciar el objetivo del este. \n\nAgradezco de antemano la participación de cada uno de los creadores ya que a través de su iniciativa esta plataforma crece. \n* Los permisos son necesarios a fin de que el juego pueda funcionar sin conexión a internet, y compartir los resultados.</string>
+
+
+    <string-array name="campo_formativo">
+        <item>Lengua Materna</item>
+        <item>Matemáticas</item>
+        <item>Ciencias</item>
+        <item>Geografía</item>
+        <item>Inglés</item>
+        <item>Artes</item>
+        <item>FCyE</item>
+        <item>Tecnología</item>
+        <item>Socioemocional</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

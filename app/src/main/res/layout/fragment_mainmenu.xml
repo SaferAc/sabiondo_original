@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/mainlogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mid_screen">
+
+        <ImageView
+            android:id="@+id/education"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/leaderbord1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            />
+
+        <Button
+            android:id="@+id/online"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/light_blue_A700"
+            android:padding="10dp"
+            android:textSize="16dp"
+            android:layout_margin="8dp"
+            android:text="CREAR Y COMPARTIR">
+        </Button>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/mid_screen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+           >
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/playbutton"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                app:lottie_fileName="playbutton.json"
+                android:layout_centerInParent="true"
+                android:padding="10dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                />
+
+
+
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:id="@+id/viewHorizontalScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:baselineAligned="false"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+
+                <ImageView
+                    android:id="@+id/achivments1"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:minWidth="60dp"
+
+                    />
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/gps_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+
+</RelativeLayout>

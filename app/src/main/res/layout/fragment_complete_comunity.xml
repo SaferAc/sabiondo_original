@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayoutcompletefc"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_viewfc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_fileName="fireworks.json"
+        app:lottie_loop="true"
+        android:foregroundGravity="center" />
+
+    <View
+        android:id="@+id/dividerfc"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/drop_shadow" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dividerfc">
+
+
+        <RelativeLayout
+            android:id="@+id/top_panelfc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <LinearLayout
+                android:id="@+id/coin_layoutfc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/coinfc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Monedas: "
+                    android:textColor="@color/txt_color"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/coin_countfc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="00"
+                    android:textColor="@color/txt_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/score_layoutfc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/coin_layoutfc"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/scorefc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Puntuación: "
+                    android:textColor="@color/txt_color"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtScorefc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="00"
+                    android:textColor="@color/txt_color"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/txt_result_titlefc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_panelfc"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="@string/completed"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/txt_color"
+            android:fontFamily="@font/rock_salt"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/result_layoutfc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_result_titlefc"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginStart="30dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:src="@drawable/check_mark" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:src="@drawable/mal" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/rightfc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Correctas"
+                        android:textColor="@color/txt_color"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/wrongfc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Incorrectas"
+                        android:textColor="@color/txt_color"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+
+            <com.saferapps.sabiondo.helper.CircularProgressIndicator2
+                android:id="@+id/result_progressfc"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/result_circle"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                app:direction="clockwise" />
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imgCoinfc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/imgScorefc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/earncoinfc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="5dp"
+
+                        android:textColor="@color/txt_color"
+                        android:textStyle="bold" />
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="5dp"
+
+                        android:textColor="@color/txt_color"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/coinslayoutfc"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/result_layoutfc">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+
+                <TextView
+                    android:id="@+id/total_scorefc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Total: 100"
+                    android:fontFamily="@font/rock_salt"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="-20dp"
+                    >
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/anim_coinsfc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:lottie_fileName="coin.json"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        />
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_equisfc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="X"
+                        android:fontFamily="@font/rock_salt"
+                        android:textSize="30sp" />
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="30dp"
+                    >
+
+
+
+                    <TextView
+                        android:id="@+id/tv_coinsfc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textSize="40sp"
+                        android:gravity="center"
+                        android:fontFamily="@font/rock_salt"
+                        android:text="1"
+                        >
+
+                    </TextView>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/coinslayoutfc"
+            >
+
+            <LinearLayout
+                android:id="@+id/button_layoutfc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_playagainfc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/fui_linkColor"
+                    app:strokeWidth="2dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/right_gradient"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:background="@color/transparent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/btn_playagaintxtfc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:text="@string/play_again"
+                                android:scrollHorizontally="true"
+                                android:textSize="18sp"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_reviewfc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/fui_linkColor"
+                    app:strokeWidth="2dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:background="@color/transparent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:text="@string/review_answer"
+                                android:scrollHorizontally="true"
+                                android:textSize="18sp"
+                                />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btn_sharefc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/fui_linkColor"
+                    app:strokeWidth="2dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_gradient">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:background="@color/transparent"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:text="@string/share_score"
+                                android:scrollHorizontally="true"
+                                android:textSize="18sp"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

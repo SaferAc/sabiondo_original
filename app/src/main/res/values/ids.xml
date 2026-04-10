@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- app_id -->
+    <string name="app_id" translatable="false">619175024507</string>
+    <!-- package_name -->
+    <string name="package_name" translatable="false">com.saferapps.sabiondo</string>
+    <!-- achievement Nivel 1 -->
+    <string name="achievement_nivel_1" translatable="false">CgkI-67UzYISEAIQFA</string>
+    <!-- achievement Nivel 2 -->
+    <string name="achievement_nivel_2" translatable="false">CgkI-67UzYISEAIQFQ</string>
+    <!-- achievement Nivel 3 -->
+    <string name="achievement_nivel_3" translatable="false">CgkI-67UzYISEAIQFg</string>
+    <!-- achievement Nivel 4 -->
+    <string name="achievement_nivel_4" translatable="false">CgkI-67UzYISEAIQFw</string>
+    <!-- achievement Nivel 5 -->
+    <string name="achievement_nivel_5" translatable="false">CgkI-67UzYISEAIQGA</string>
+    <!-- achievement Nivel 6 -->
+    <string name="achievement_nivel_6" translatable="false">CgkI-67UzYISEAIQGQ</string>
+    <!-- achievement Nivel 7 -->
+    <string name="achievement_nivel_7" translatable="false">CgkI-67UzYISEAIQGg</string>
+    <!-- achievement Nivel 8 -->
+    <string name="achievement_nivel_8" translatable="false">CgkI-67UzYISEAIQGw</string>
+    <!-- achievement Nivel 9 -->
+    <string name="achievement_nivel_9" translatable="false">CgkI-67UzYISEAIQHA</string>
+    <!-- achievement Nivel 10 -->
+    <string name="achievement_nivel_10" translatable="false">CgkI-67UzYISEAIQHQ</string>
+    <!-- achievement Nivel 11 -->
+    <string name="achievement_nivel_11" translatable="false">CgkI-67UzYISEAIQHg</string>
+    <!-- achievement Nivel 12 -->
+    <string name="achievement_nivel_12" translatable="false">CgkI-67UzYISEAIQHw</string>
+    <!-- achievement Nivel 13 -->
+    <string name="achievement_nivel_13" translatable="false">CgkI-67UzYISEAIQIA</string>
+    <!-- achievement Nivel 14 -->
+    <string name="achievement_nivel_14" translatable="false">CgkI-67UzYISEAIQIQ</string>
+    <!-- achievement Nivel 15 -->
+    <string name="achievement_nivel_15" translatable="false">CgkI-67UzYISEAIQIg</string>
+    <!-- achievement Nivel 16 -->
+    <string name="achievement_nivel_16" translatable="false">CgkI-67UzYISEAIQIw</string>
+    <!-- achievement Nivel 17 -->
+    <string name="achievement_nivel_17" translatable="false">CgkI-67UzYISEAIQJA</string>
+    <!-- achievement Nivel 18 -->
+    <string name="achievement_nivel_18" translatable="false">CgkI-67UzYISEAIQJQ</string>
+    <!-- achievement Nivel 19 -->
+    <string name="achievement_nivel_19" translatable="false">CgkI-67UzYISEAIQJg</string>
+    <!-- achievement Nivel 20 -->
+    <string name="achievement_nivel_20" translatable="false">CgkI-67UzYISEAIQJw</string>
+    <!-- achievement Nivel 21 -->
+    <string name="achievement_nivel_21" translatable="false">CgkI-67UzYISEAIQKA</string>
+    <!-- achievement Nivel 22 -->
+    <string name="achievement_nivel_22" translatable="false">CgkI-67UzYISEAIQKQ</string>
+    <!-- achievement Nivel 23 -->
+    <string name="achievement_nivel_23" translatable="false">CgkI-67UzYISEAIQKg</string>
+    <!-- achievement Nivel 24 -->
+    <string name="achievement_nivel_24" translatable="false">CgkI-67UzYISEAIQKw</string>
+    <!-- achievement Nivel 25 -->
+    <string name="achievement_nivel_25" translatable="false">CgkI-67UzYISEAIQLA</string>
+    <!-- achievement Curioso -->
+    <string name="achievement_curioso" translatable="false">CgkI-67UzYISEAIQLQ</string>
+    <!-- achievement Aprendiz -->
+    <string name="achievement_aprendiz" translatable="false">CgkI-67UzYISEAIQLg</string>
+    <!-- achievement Perspicaz -->
+    <string name="achievement_perspicaz" translatable="false">CgkI-67UzYISEAIQLw</string>
+    <!-- achievement Sagaz -->
+    <string name="achievement_sagaz" translatable="false">CgkI-67UzYISEAIQMA</string>
+    <!-- achievement Ingenio -->
+    <string name="achievement_ingenio" translatable="false">CgkI-67UzYISEAIQMQ</string>
+    <!-- achievement Disciplina -->
+    <string name="achievement_disciplina" translatable="false">CgkI-67UzYISEAIQMg</string>
+    <!-- achievement Inteligencia -->
+    <string name="achievement_inteligencia" translatable="false">CgkI-67UzYISEAIQMw</string>
+    <!-- achievement Sabiondo -->
+    <string name="achievement_sabiondo" translatable="false">CgkI-67UzYISEAIQNA</string>
+    <!-- leaderboard Sabiondos -->
+
+</resources>

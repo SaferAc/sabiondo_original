@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+            <RelativeLayout
+            android:id="@+id/wave_layout"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/gradient_list">
+
+            <RelativeLayout
+                android:id="@+id/top_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top">
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/score_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/top_panel"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1">
+
+
+
+                    <ImageView
+                        android:id="@+id/right"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        android:src="@drawable/check_mark" />
+
+                    <TextView
+                        android:id="@+id/txtTrueQuestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="-2dp"
+                        android:layout_toEndOf="@+id/right"
+                        android:text="0"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="#76FF03" />
+
+                    <ImageView
+                        android:id="@+id/wrong"
+                        android:layout_width="63dp"
+                        android:layout_height="73dp"
+                        android:layout_below="@+id/right"
+                        android:layout_marginStart="-20dp"
+                        android:layout_marginTop="-23dp"
+                        android:padding="5dp"
+                        android:src="@mipmap/wrong_foreground" />
+
+                    <TextView
+                        android:id="@+id/txtFalseQuestion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtTrueQuestion"
+                        android:layout_marginStart="-15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/wrong"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="#76FF03" />
+                    <TextView
+                        android:id="@+id/txtLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtFalseQuestion"
+                        android:text="@string/nivel"
+                        android:textColor="#2196F3"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <com.saferapps.sabiondo.helper.CircularProgressIndicator
+                        android:id="@+id/progressBarTwo"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true"
+                        app:direction="counterclockwise"
+                        />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imgCoin"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:padding="5dp"
+                            android:src="@drawable/coins" />
+
+                        <ImageView
+                            android:id="@+id/imgScore"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:padding="5dp"
+                            android:src="@drawable/score" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/coin_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/_00"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="#C51162" />
+
+
+                        <TextView
+                            android:id="@+id/txtScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="@string/_00"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="#C51162" />
+                        <TextView
+                            android:id="@+id/txt_question"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/level_progress"
+                            android:textColor="#C51162"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_answare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wave_layout"
+            android:layout_marginStart="5dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="150dp"
+                android:layout_margin="10dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="@color/light_blue_A200"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp">
+
+                <TextView
+                    android:id="@+id/txtQuestion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="@string/app_name"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+            </com.google.android.material.card.MaterialCardView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom_panel"
+            android:layout_below="@+id/layout_answare"
+            android:layout_marginLeft="@dimen/play_margin"
+            android:layout_marginRight="@dimen/play_margin">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardView_A"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/play_margin"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:strokeColor="@color/fui_linkColor"
+                        app:strokeWidth="2dp"
+                        app:cardCornerRadius="25dp">
+
+                        <RelativeLayout
+                            android:id="@+id/a_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_gradient">
+
+                            <LinearLayout
+                                android:id="@+id/main_option_a"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:background="@color/transparent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/btnOpt1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:padding="5dp"
+                                    android:text="@string/done"
+                                    android:scrollHorizontally="true"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/txt_color" />
+
+                            </LinearLayout>
+
+                            <com.saferapps.sabiondo.helper.CircularProgressIndicator2
+                                android:id="@+id/progress_A"
+                                android:layout_width="@dimen/circle_progress"
+                                android:layout_height="@dimen/circle_progress"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="5dp"
+                                android:visibility="visible"
+                                app:direction="clockwise" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardView_B"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/play_margin"
+                        app:strokeColor="@color/fui_linkColor"
+                        app:strokeWidth="2dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="25dp">
+
+                        <RelativeLayout
+                            android:id="@+id/b_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_gradient">
+
+                            <LinearLayout
+                                android:id="@+id/main_option_b"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:orientation="horizontal">
+
+
+
+
+                                <TextView
+                                    android:id="@+id/btnOpt2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="@string/done"
+                                    android:textAlignment="center"
+                                    android:scrollHorizontally="true"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/txt_color" />
+
+                            </LinearLayout>
+
+                            <com.saferapps.sabiondo.helper.CircularProgressIndicator2
+                                android:id="@+id/progress_B"
+                                android:layout_width="@dimen/circle_progress"
+                                android:layout_height="@dimen/circle_progress"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="5dp"
+                                app:direction="clockwise" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardView_C"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/play_margin"
+                        app:strokeColor="@color/fui_linkColor"
+                        app:strokeWidth="2dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="25dp">
+
+                        <RelativeLayout
+                            android:id="@+id/c_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_gradient">
+
+
+                            <LinearLayout
+                                android:id="@+id/main_option_c"
+                                android:layout_centerInParent="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:orientation="horizontal">
+
+
+
+                                <TextView
+                                    android:id="@+id/btnOpt3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:padding="5dp"
+                                    android:text="@string/done"
+                                    android:scrollHorizontally="true"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/txt_color" />
+
+                            </LinearLayout>
+
+                            <com.saferapps.sabiondo.helper.CircularProgressIndicator2
+                                android:id="@+id/progress_C"
+                                android:layout_width="@dimen/circle_progress"
+                                android:layout_height="@dimen/circle_progress"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="5dp"
+                                app:direction="clockwise" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardView_D"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/play_margin"
+                        android:layout_marginBottom="@dimen/play_margin"
+                        app:strokeColor="@color/fui_linkColor"
+                        app:strokeWidth="2dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        app:cardCornerRadius="25dp">
+
+                        <RelativeLayout
+                            android:id="@+id/d_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_gradient">
+
+
+                            <LinearLayout
+                                android:id="@+id/main_option_d"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="5dp"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:id="@+id/btnOpt4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="5dp"
+                                    android:text="@string/done"
+                                    android:textAlignment="center"
+                                    android:scrollHorizontally="true"
+                                    android:textSize="18sp"
+                                    android:textColor="@color/txt_color" />
+
+                            </LinearLayout>
+
+                            <com.saferapps.sabiondo.helper.CircularProgressIndicator2
+                                android:id="@+id/progress_D"
+                                android:layout_width="@dimen/circle_progress"
+                                android:layout_height="@dimen/circle_progress"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="5dp"
+                                app:direction="clockwise" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/fifty_fifty"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    app:lottie_fileName="star.json"
+                    app:lottie_loop="true" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/skip_quation"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    app:lottie_fileName="next.json"
+                    app:lottie_loop="true" />
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/audience_poll"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    app:lottie_fileName="ask.json"
+                    app:lottie_loop="true" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/reset_timer"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    app:lottie_fileName="time.json"
+                    app:lottie_loop="true" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/correctanim"
+        android:layout_height="200dp"
+        android:layout_width="200dp"
+        android:layout_centerInParent="true"/>
+
+    <FrameLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:indeterminateTint="@android:color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cargando preguntas..."
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
+    </FrameLayout>
+</RelativeLayout>

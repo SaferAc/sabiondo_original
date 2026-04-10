@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "619175024507",
+    "firebase_url": "https://sabiondo-60773961.firebaseio.com",
+    "project_id": "sabiondo-60773961",
+    "storage_bucket": "sabiondo-60773961.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619175024507:android:3b3cfe3f3c52557bc20fde",
+        "android_client_info": {
+          "package_name": "com.saferapps.sabiondo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619175024507-fnmts5isop62bmnb4ujlm9h5mot6eut1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saferapps.sabiondo",
+            "certificate_hash": "7d3c5534d60d011d53382b48b858218af1631a4b"
+          }
+        },
+        {
+          "client_id": "619175024507-lliblmqjs2cag9a6us5n472pntncvpor.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEgF5_iTA4uOhcKiRQdBjhMG7gDPHJPJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619175024507-lliblmqjs2cag9a6us5n472pntncvpor.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-7878826314411715~8268015171"
+    }
+  ],
+  "configuration_version": "1"
+}

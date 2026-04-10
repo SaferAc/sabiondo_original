@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="@drawable/drop_shadow" />
+
+
+
+
+
+
+
+    <androidx.cardview.widget.CardView
+
+        android:layout_below="@+id/divider"
+        android:id="@+id/card_txtquestion"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        android:layout_margin="10dp"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <ImageView
+            android:id="@+id/camera_image"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="fill_vertical"
+            android:focusable="true"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_add_a_photo_black_24dp" />
+
+
+
+
+            <EditText
+                android:id="@+id/et_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="20dp"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:maxLength="90"
+                android:textColor="@color/txt_color"
+                android:padding="10dp"
+                android:hint="Escriba la pregunta"
+                />
+
+
+    </androidx.cardview.widget.CardView>
+
+   <LinearLayout
+       android:id="@+id/optionsline"
+       android:layout_below="@+id/card_txtquestion"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:layout_marginStart="8dp"
+           android:text="Opciones de respuesta"/>
+
+   </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/optionsline"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scrollbars="none">
+
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView_A"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:id="@+id/a_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+                        <RadioButton
+                            android:id="@+id/rb_a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="8dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/main_option_a"
+                            android:layout_centerInParent="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="5dp"
+                            android:orientation="horizontal">
+
+
+                            <EditText
+                                android:id="@+id/et_opta"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="5dp"
+                                android:hint="Opción A"
+                                android:maxLength="30"
+                                android:layout_gravity="center"
+                                android:textAlignment="center"
+                                android:inputType="textFilter"
+                                android:maxLines="1"
+                                android:textSize="18sp"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView_B"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:id="@+id/b_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/rb_b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="8dp"/>
+
+                        <LinearLayout
+                            android:id="@+id/main_option_b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:orientation="horizontal">
+
+
+
+                            <EditText
+                                android:id="@+id/et_optb"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:textAlignment="center"
+                                android:hint="Opción B"
+                                android:maxLength="30"
+                                android:inputType="textFilter"
+                                android:maxLines="1"
+                                android:textSize="18sp"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView_C"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:id="@+id/c_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+                        <RadioButton
+                            android:id="@+id/rb_c"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="8dp"/>
+
+
+                        <LinearLayout
+                            android:id="@+id/main_option_c"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:orientation="horizontal">
+
+
+                            <EditText
+                                android:id="@+id/et_optc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:padding="5dp"
+                                android:textAlignment="center"
+                                android:hint="Opción C"
+                                android:maxLength="30"
+                                android:inputType="textFilter"
+                                android:maxLines="1"
+                                android:textSize="18sp"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView_D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="25dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:id="@+id/d_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+                        <RadioButton
+                            android:id="@+id/rb_d"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="8dp"/>
+
+
+                        <LinearLayout
+                            android:id="@+id/main_option_d"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="5dp"
+                            android:orientation="horizontal">
+
+
+
+                            <EditText
+                                android:id="@+id/et_optd"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textAlignment="center"
+                                android:padding="5dp"
+                                android:hint="Opción D"
+                                android:maxLength="30"
+                                android:maxLines="1"
+                                android:textSize="18sp"
+                                android:inputType="textFilter"
+                                android:textColor="@color/txt_color" />
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_below="@+id/main_layout"
+        android:id="@+id/chiplayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_asignment"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Asignatura"
+            android:textStyle="bold"
+            />
+
+<HorizontalScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/subjectChipGroup"
+        app:selectionRequired="true"
+        android:layout_width="wrap_content"
+        app:singleLine="true"
+        app:singleSelection="true"
+        android:scrollbars="horizontal"
+        android:layout_margin="8dp"
+        android:layout_height="wrap_content">
+
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip20"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="8dp"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        app:chipBackgroundColor="@android:color/holo_green_light"
+        android:text="Español"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip21"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        app:chipBackgroundColor="@android:color/holo_orange_light"
+        android:layout_marginBottom="8dp"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:text="Matemáticas"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip22"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        app:chipBackgroundColor="@android:color/holo_blue_light"
+        android:layout_marginBottom="8dp"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:text="Ciencias"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip23"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="8dp"
+        android:padding="12dp"
+        app:chipBackgroundColor="@android:color/holo_orange_dark"
+        android:text="Historia"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip24"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="8dp"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        app:chipBackgroundColor="@android:color/holo_purple"
+        android:text="Geografía"
+        android:textAlignment="center"
+        android:textSize="14sp" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip25"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="8dp"
+        app:chipBackgroundColor="@android:color/holo_red_light"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:text="Tecnología"
+        android:textAlignment="center"
+        android:textSize="14sp"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip26"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_marginBottom="8dp"
+            app:chipBackgroundColor="@android:color/holo_green_dark"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:text="Artes"
+            android:textAlignment="center"
+            android:textSize="14sp"/>
+
+        <com.google.android.material.chip.Chip
+        android:id="@+id/chip27"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="8dp"
+        app:chipBackgroundColor="@android:color/holo_orange_dark"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:text="FCyE"
+        android:textAlignment="center"
+        android:textSize="14sp"/>
+
+        <com.google.android.material.chip.Chip
+        android:id="@+id/chip28"
+        style="@style/Widget.MaterialComponents.Chip.Filter"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:layout_marginBottom="8dp"
+        app:chipBackgroundColor="@android:color/holo_blue_dark"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:text="Socioemocional"
+        android:textAlignment="center"
+        android:textSize="14sp"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip29"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:layout_marginBottom="8dp"
+            app:chipBackgroundColor="@android:color/holo_orange_dark"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:text="Otra"
+            android:textAlignment="center"
+            android:textSize="14sp"/>
+
+    </com.google.android.material.chip.ChipGroup>
+</HorizontalScrollView>
+        <TextView
+            android:id="@+id/tv_feedback"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Realimentación"
+            android:textStyle="bold"
+            />
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="10dp"
+            android:elevation="4dp"
+            android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/et_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:textAlignment="center"
+            android:maxLength="80"
+            android:hint="Escriba la realimentación de la pregunta(Opcional)"/>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_below="@+id/chiplayout"
+            android:layout_margin="16dp"
+            android:id="@+id/btn"
+            app:cardCornerRadius="25dp">
+
+            <Button
+                android:id="@+id/btn_addquestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/right_gradient"
+                android:gravity="center"
+                android:text="Agregar"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:textColor="@color/txt_color"
+                android:textStyle="bold" />
+
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</RelativeLayout>
+
+
+
+</ScrollView>

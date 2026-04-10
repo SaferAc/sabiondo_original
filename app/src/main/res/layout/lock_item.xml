@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="160dp"
+    android:layout_height="160dp"
+    app:cardCornerRadius="15dp"
+    android:orientation="vertical"
+    app:cardElevation="5dp"
+    android:background="@drawable/bg_gradient"
+    android:layout_gravity="center"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lock"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            app:lottie_fileName="lock.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:text="Nivel"
+            android:textSize="30sp"
+            android:textColor="@color/txt_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/question_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:text="Total: 10%"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/txt_color" />
+
+        <TextView
+            android:id="@+id/scoretotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_title"
+            android:layout_marginBottom="5dp"
+            android:layout_centerHorizontal="true"
+            android:text="Puntos: 10"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:textColor="@color/txt_color" />
+
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_below="@id/scoretotal"
+            android:stepSize="0.5"
+            android:rating="4.5"
+            app:mrb_progressTint="@color/Yellow"
+            app:mrb_secondaryProgressTint="@color/colorAccent"
+            style="@style/Widget.MaterialRatingBar.RatingBar.Indicator" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/titlebar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:gravity="center_horizontal"
+            android:text="Ayuda"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/contents_view"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_below="@+id/titlebar_layout">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:fadeScrollbars="false"
+            android:scrollbars="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Instructions" />
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/power_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/contents_view"
+        android:background="@color/orange_A200"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/txtPowerUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Power Ups"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/txt_color"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/star_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/power_layout"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:padding="5dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/star"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="star.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/sound_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/star"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="Elimina 2 opciones incorrectas"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/next_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_below="@+id/star_layout"
+        android:padding="5dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+
+            android:id="@+id/next"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="next.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/next_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/next"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:text="Pasar pregunta"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+             />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ask_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_below="@+id/next_layout"
+        android:padding="5dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/askanimation"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="ask.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/ask_text"
+            android:layout_width="match_parent"
+            android:layout_toEndOf="@+id/askanimation"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Cien Sabiondos dijeron"
+            android:padding="10dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+             />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/time_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_below="@+id/ask_layout"
+        android:padding="5dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/timeanimation"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:lottie_fileName="time.json"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"/>
+
+        <TextView
+            android:id="@+id/time_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/timeanimation"
+            android:text="Obten tiempo extra"
+            android:padding="10dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+          />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ok_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:layout_below="@+id/time_layout"
+        >
+
+
+        <TextView
+            android:id="@+id/okbooster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/right_gradient"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="OK"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+

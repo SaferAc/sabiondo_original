@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/result_cv"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/header2"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:text="Titulo del cuestionario"
+            android:textColor="@color/black"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+           android:layout_marginStart="4dp"
+            android:id="@+id/line_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Nivel:"/>
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/txt_level"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="Primaria"
+            />
+        </LinearLayout>
+            <LinearLayout
+                android:layout_below="@+id/line_level"
+                android:layout_marginStart="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Trimestre:" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv_trimestre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="1"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+            android:id="@+id/tv_votes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="000"
+            style="@style/TextAppearance.AppCompat.Medium"
+            />
+            <ImageView
+                android:id="@+id/sharebtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_share_gray_24dp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_scho_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="1°"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_margin="4dp"
+            style="@style/TextAppearance.AppCompat.Headline"/>
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activity.LoginActivity"
+tools:ignore="VectorDrawableCompat">
+
+<androidx.appcompat.widget.Toolbar
+    android:id="@+id/bgHeader"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:elevation="5dp" />
+
+<TextView
+    android:id="@+id/tvWelcome"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="40dp"
+    android:elevation="5dp"
+    android:text="Bienvenido"
+    android:textColor="@color/txt_color"
+    android:textSize="17sp" />
+
+<TextView
+    android:id="@+id/tvLogin"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvWelcome"
+    android:layout_alignStart="@+id/tvWelcome"
+    android:text="Iniciar Sesión"
+    android:textColor="@color/light_blue_A700"
+    android:textSize="30sp"
+    android:textStyle="bold" />
+
+
+
+
+
+
+
+
+
+<ScrollView
+    android:id="@+id/sv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/bgHeader">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            app:cardBackgroundColor="#80FFFFFF"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="60dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Correro"
+                    android:textColor="@color/blue_A200"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoginUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Ingrese su correo"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/txt_color"
+                    android:inputType="textEmailAddress"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="Password"
+                    android:textColor="@color/blue_A200"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etLoginPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/txt_color"
+                    android:layout_marginLeft="10dp"
+                    android:hint="Password"
+                    android:layout_marginRight="10dp"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv"
+            android:layout_alignStart="@+id/cv"
+            android:layout_alignEnd="@+id/cv"
+            android:layout_marginLeft="35dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginRight="35dp"
+            android:elevation="10dp">
+
+            <com.dd.morphingbutton.MorphingButton
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingresar"
+                android:background="@color/Blue"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/cv"
+            android:layout_alignEnd="@+id/cv"
+            android:layout_marginTop="-20dp"
+            android:layout_marginEnd="-20dp"
+            android:elevation="10dp">
+
+            <ImageButton
+                android:id="@+id/btnRegister"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_ui"
+                android:src="@drawable/ic_add_white" />
+        </RelativeLayout>
+
+
+
+
+
+
+        <TextView
+            android:id="@+id/tvForgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:elevation="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_A400"
+            android:text="Ingresar con PlayGames:"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/usertype"
+            android:layout_below="@id/tvForgot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/blue_A200"
+            android:text="Tipo de Usuario"/>
+
+        <com.google.android.gms.common.SignInButton
+            android:layout_below="@+id/chipgroup_roluser2"
+            android:id="@+id/sign_in_button"
+            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="8dp"
+            />
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_below="@id/usertype"
+            android:id="@+id/chipgroup_roluser2"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:singleLine="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipteacher2"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_marginBottom="8dp"
+                android:padding="12dp"
+                android:text="Docente"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="14sp"
+                app:chipBackgroundColor="@color/white"
+                app:chipStrokeColor="@android:color/holo_blue_dark"
+                app:chipStrokeWidth="1dp"
+                app:chipSurfaceColor="@android:color/transparent" />
+
+
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipStudent2"
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_marginBottom="8dp"
+                android:padding="12dp"
+                android:text="Estudiante"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="14sp"
+                app:chipBackgroundColor="@color/white"
+                app:chipStrokeColor="@android:color/holo_green_light"
+                app:chipStrokeWidth="1dp"
+                app:chipSurfaceColor="@android:color/transparent" />
+
+
+
+
+
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/tv_anon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sign_in_button"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:elevation="5dp"
+            android:textColor="@color/blue_A400"
+            android:text="Tambien puedes"
+            android:textStyle="bold"
+            android:textSize="14sp" />
+        <com.dd.morphingbutton.MorphingButton
+            android:layout_below="@+id/tv_anon"
+            android:id="@+id/anonymous_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Continuar como invitado"
+            android:layout_marginStart="60dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="60dp"
+            android:backgroundTint="@color/bg_color"
+            android:textColor="@color/txt_color" />
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:id="@+id/anon"
+            android:layout_below="@id/anonymous_button"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/checkboxprivacy2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtprivacy"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Acepto"/>
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true">
+    <TextView
+        android:id="@+id/tvAppTittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="Sabiondo"
+        android:textAlignment="textEnd"
+        android:textColor="@color/blue_A200"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvFirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAppTittle"
+        android:layout_alignEnd="@+id/tvAppTittle"
+        android:textAlignment="textEnd"
+        android:fontFamily="cursive"
+        android:text="by SaferApps"
+        android:textColor="@color/blue_A200"
+        android:textSize="24sp"
+        />
+    </LinearLayout>
+
+</RelativeLayout>
