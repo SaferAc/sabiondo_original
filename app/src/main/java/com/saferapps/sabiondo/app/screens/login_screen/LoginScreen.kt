@@ -1,7 +1,10 @@
 package com.saferapps.sabiondo.app.screens.login_screen
 
 import android.content.Intent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +19,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
@@ -27,9 +34,9 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -38,6 +45,7 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.LinkAnnotation
@@ -48,11 +56,20 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.saferapps.sabiondo.activity.MainActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.res.painterResource
+import com.saferapps.sabiondo.R
 
 
 @Composable
@@ -77,50 +94,85 @@ fun LoginScreen(
             }
     }
 
+    // Google Sign In Launcher
+    val googleSignInLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+        try {
+            val account = task.getResult(ApiException::class.java)
+            account.idToken?.let { idToken ->
+                controller.onGoogleSignIn(idToken)
+            }
+        } catch (e: ApiException) {
+            // Error handling
+        }
+    }
+
+    fun startGoogleSignIn() {
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("619175024507-lliblmqjs2cag9a6us5n472pntncvpor.apps.googleusercontent.com")
+            .requestEmail()
+            .build()
+        val googleSignInClient = GoogleSignIn.getClient(context, gso)
+        googleSignInLauncher.launch(googleSignInClient.signInIntent)
+    }
+
 
     val text = buildAnnotatedString {
         append("¿No tienes cuenta? ")
-        addLink(
-            LinkAnnotation.Clickable(
-                tag = "register",
-                linkInteractionListener = { onNavigateToRegister() }
-            ),
-            start = length,
-            end = length + "Regístrate".length
-        )
-        addStyle(
+        withStyle(
             SpanStyle(
-                color = MaterialTheme.colorScheme.primary,
+                color = Color(0xFF448AFF),
+                fontWeight = FontWeight.Bold,
                 textDecoration = TextDecoration.Underline
-            ),
-            start = length,
-            end = length + "Regístrate".length
-        )
-        append("Regístrate")
+            )
+        ) {
+            addLink(
+                LinkAnnotation.Clickable(
+                    tag = "register",
+                    linkInteractionListener = { onNavigateToRegister() }
+                ),
+                start = length,
+                end = length + "Regístrate".length
+            )
+            append("Regístrate")
+        }
     }
 
-    Box(Modifier.fillMaxSize()) {
+    Box(
+        Modifier
+            .fillMaxSize()
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(Color(0xFFE3F2FD), Color(0xFFFFFDE7))
+                )
+            )
+    ) {
         Column {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
-                    .shadow(5.dp)
-                    .background(Color(0xFF448AFF))
-                    .padding(start = 30.dp, top = 40.dp),
-                contentAlignment = Alignment.TopStart
+                    .padding(top = 60.dp),
+                contentAlignment = Alignment.Center
             ) {
-                Column {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(
                         "Bienvenido",
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        fontSize = 17.sp
+                        color = Color(0xFF546E7A),
+                        fontSize = 16.sp
                     )
                     Text(
-                        "Iniciar Sesión",
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 30.sp
+                        "Sabiondo",
+                        color = Color(0xFF448AFF),
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 32.sp
+                    )
+                    Text(
+                        "by SaferApps",
+                        color = Color(0xFF90A4AE),
+                        fontSize = 14.sp,
+                        fontFamily = FontFamily.Cursive
                     )
                 }
             }
@@ -133,111 +185,158 @@ fun LoginScreen(
                 // CARD
                 Box(Modifier.padding(20.dp)) {
                     Card(
+                        shape = RoundedCornerShape(40.dp),
+                        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
                         colors = CardDefaults.cardColors(
-                            containerColor = Color.White.copy(alpha = 0.5f)
+                            containerColor = Color.White
+                        ),
+                        modifier = Modifier.shadow(
+                            elevation = 20.dp,
+                            shape = RoundedCornerShape(40.dp),
+                            clip = false,
+                            ambientColor = Color(0xFF448AFF).copy(alpha = 0.1f),
+                            spotColor = Color(0xFF448AFF).copy(alpha = 0.2f)
                         )
                     ) {
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(bottom = 60.dp)
+                                .padding(top = 30.dp, start = 24.dp, end = 24.dp, bottom = 60.dp)
                         ) {
-                            OutlinedTextField(
-                                value = state.email,
-                                label = { Text("Correo", ) },
-                                textStyle = TextStyle(color = Color.Black),
-                                onValueChange = controller::onEmailChange,
-                                placeholder = { Text("Ingrese su correo") },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 10.dp),
-                                isError = state.errorMailVisible,
-                                supportingText = {
-                                    if (state.errorMailVisible) {
-                                        Text("Ingresa un correo válido", style = TextStyle(color = Color.Red))
-                                    }
-                                }
+                            Text(
+                                "Iniciar Sesión",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 24.sp,
+                                modifier = Modifier.padding(bottom = 24.dp)
                             )
 
+                            TextField(
+                                value = state.email,
+                                onValueChange = controller::onEmailChange,
+                                placeholder = { Text("Correo electrónico", fontSize = 14.sp) },
+                                leadingIcon = { Icon(Icons.Default.Email, contentDescription = null, tint = Color(0xFF448AFF)) },
+                                modifier = Modifier.fillMaxWidth()
+                                    .border(
+                                        width = if (state.errorMailVisible) 2.dp else 0.dp,
+                                        color = if (state.errorMailVisible) Color.Red else Color.Transparent,
+                                        shape = RoundedCornerShape(16.dp)
+                                    ),
+                                shape = RoundedCornerShape(16.dp),
+                                colors = TextFieldDefaults.colors(
+                                    focusedContainerColor = Color(0xFFF1F5F9),
+                                    unfocusedContainerColor = Color(0xFFF1F5F9),
+                                    errorContainerColor = Color(0xFFF1F5F9),
+                                    disabledContainerColor = Color(0xFFF1F5F9),
+                                    focusedIndicatorColor = Color.Transparent,
+                                    unfocusedIndicatorColor = Color.Transparent,
+                                    errorIndicatorColor = Color.Transparent,
+                                    focusedTextColor = Color.Black,
+                                    unfocusedTextColor = Color.Black,
+                                    errorTextColor = Color.Black
+                                ),
+                                textStyle = TextStyle(fontSize = 16.sp, color = Color.Black),
+                                isError = state.errorMailVisible
+                            )
                             Spacer(Modifier.height(16.dp))
 
-                            OutlinedTextField(
+                            TextField(
                                 value = state.password,
-                                label = { Text("Contraseña") },
-                                textStyle = TextStyle(color = Color.Black),
                                 onValueChange = controller::onPasswordChange,
                                 visualTransformation = if (state.passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                                placeholder = { Text("Ingresa contraseña") },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(horizontal = 10.dp),
-                                isError = state.errorPasswordVisible,
+                                placeholder = { Text("Contraseña", fontSize = 14.sp) },
+                                leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null, tint = Color(0xFF448AFF)) },
+                                modifier = Modifier.fillMaxWidth()
+                                    .border(
+                                        width = if (state.errorPasswordVisible) 2.dp else 0.dp,
+                                        color = if (state.errorPasswordVisible) Color.Red else Color.Transparent,
+                                        shape = RoundedCornerShape(16.dp)
+                                    ),
+                                shape = RoundedCornerShape(16.dp),
+                                colors = TextFieldDefaults.colors(
+                                    focusedContainerColor = Color(0xFFF1F5F9),
+                                    unfocusedContainerColor = Color(0xFFF1F5F9),
+                                    errorContainerColor = Color(0xFFF1F5F9),
+                                    disabledContainerColor = Color(0xFFF1F5F9),
+                                    focusedIndicatorColor = Color.Transparent,
+                                    unfocusedIndicatorColor = Color.Transparent,
+                                    errorIndicatorColor = Color.Transparent,
+                                    focusedTextColor = Color.Black,
+                                    unfocusedTextColor = Color.Black,
+                                    errorTextColor = Color.Black
+                                ),
                                 trailingIcon = {
                                     IconButton(onClick = controller::onPasswordVisible) {
                                         Icon(if (state.passwordVisible) Icons.Default.Visibility else Icons.Default.VisibilityOff, null)
                                     }
                                 },
-                                supportingText = {
-                                    if (state.errorPasswordVisible) {
-                                        Text("Contraseña Incorrecta", style = TextStyle(color = Color.Red))
-                                    }
-                                }
+                                textStyle = TextStyle(fontSize = 16.sp, color = Color.Black),
+                                isError = state.errorPasswordVisible
                             )
 
                             if (state.authError) {
                                 Text(
-                                    "Error de autenticación. Verifique sus credenciales.",
+                                    state.error ?: "Error de autenticación. Verifique sus credenciales.",
                                     color = Color.Red,
-                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 8.dp),
+                                    modifier = Modifier.padding(vertical = 8.dp),
                                     fontSize = 12.sp
                                 )
                             }
                         }
                     }
 
-                    Button(
-                        onClick = controller::login,
-                        enabled = !state.loading,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF2979FF),
-                            contentColor = Color.White,
-                        ),
+                    Box(
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .offset(y = 20.dp)
-                            .fillMaxWidth(0.9f)
-                    ) {
-                        if (state.loading) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(20.dp),
-                                color = Color.Blue,
-                                strokeWidth = 2.dp
+                            .offset(y = 25.dp)
+                            .fillMaxWidth(0.85f)
+                            .height(50.dp)
+                            .background(
+                                Brush.horizontalGradient(
+                                    colors = listOf(Color(0xFF00BFA5), Color(0xFF00B0FF))
+                                ),
+                                shape = RoundedCornerShape(25.dp)
                             )
-                        } else {
-                            Text("Ingresar")
+                            .shadow(8.dp, RoundedCornerShape(25.dp))
+                    ) {
+                        Button(
+                            onClick = controller::login,
+                            enabled = !state.loading,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent,
+                                contentColor = Color.White,
+                            ),
+                            modifier = Modifier.fillMaxSize(),
+                            shape = RoundedCornerShape(25.dp)
+                        ) {
+                            if (state.loading) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.size(20.dp),
+                                    color = Color.White,
+                                    strokeWidth = 2.dp
+                                )
+                            } else {
+                                Text("INGRESAR", fontSize = 16.sp, fontWeight = FontWeight.ExtraBold)
+                            }
                         }
                     }
                 }
 
-                Spacer(Modifier.height(30.dp))
+                Spacer(Modifier.height(40.dp))
                 Text(
                     text = text,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    fontSize = 14.sp,
+                    color = Color.Gray
                 )
 
-                Spacer(Modifier.height(16.dp))
-                Text(
-                    "Ingresar con PlayGames:",
-                    modifier = Modifier.padding(start = 16.dp),
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF2979FF)
-                )
+                Spacer(Modifier.height(30.dp))
 
-                Spacer(Modifier.height(8.dp))
                 Text(
                     "Tipo de Usuario",
                     modifier = Modifier.align(Alignment.CenterHorizontally),
-                    color = Color(0xFF448AFF)
+                    color = Color(0xFF546E7A),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold
                 )
 
                 Row(
@@ -246,49 +345,47 @@ fun LoginScreen(
                     FilterChip(
                         selected = state.role == "Docente",
                         onClick = { controller.onRoleChange("Docente") },
-                        label = { Text("Docente") }
+                        label = { Text("Docente", fontSize = 14.sp) }
                     )
                     Spacer(Modifier.width(8.dp))
                     FilterChip(
                         selected = state.role == "Estudiante",
                         onClick = { controller.onRoleChange("Estudiante") },
-                        label = { Text("Estudiante") }
+                        label = { Text("Estudiante", fontSize = 14.sp) }
                     )
                 }
 
-                Spacer(Modifier.height(16.dp))
-                Button(
-                    onClick = {},
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 50.dp)
-                ) {
-                    Text("Play Games")
-                }
-
-                Spacer(Modifier.height(16.dp))
-                Text(
-                    "También puedes:",
-                    modifier = Modifier.padding(start = 16.dp),
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF2979FF)
-                )
-
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Yellow,
-                        contentColor = Color.Black,
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 60.dp, vertical = 16.dp)
-                ) {
-                    Text("Continuar como invitado")
-                }
-
+                Spacer(Modifier.height(30.dp))
+                
                 Row(
-                    modifier = Modifier.padding(horizontal = 16.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 40.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(Modifier.weight(1f).height(1.dp).background(Color.LightGray))
+                    Text(
+                        "O CONTINÚA CON",
+                        modifier = Modifier.padding(horizontal = 16.dp),
+                        fontSize = 12.sp,
+                        color = Color.Gray,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Box(Modifier.weight(1f).height(1.dp).background(Color.LightGray))
+                }
+
+                Spacer(Modifier.height(24.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    SocialButton("Google") { startGoogleSignIn() }
+                }
+
+                Spacer(Modifier.height(32.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
@@ -305,26 +402,60 @@ fun LoginScreen(
                         addStyle(
                             SpanStyle(
                                 color = Color.Black,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 14.sp
                             ),
                             start = length,
                             end = length + "términos y condiciones".length
                         )
                         append("términos y condiciones")
-                    })
+                    }, fontSize = 14.sp, textAlign = TextAlign.Center)
                 }
                 Spacer(Modifier.height(100.dp))
             }
         }
+    }
+}
 
-        Column(
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(20.dp),
-            horizontalAlignment = Alignment.End
+@Composable
+fun SocialButton(text: String, onClick: () -> Unit) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 40.dp)
+            .height(50.dp)
+            .clickable { onClick() },
+        shape = RoundedCornerShape(25.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        border = BorderStroke(1.dp, Color.LightGray),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Row(
+            modifier = Modifier.fillMaxSize(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
         ) {
-            Text("Sabiondo", color = Color(0xFF448AFF), fontSize = 26.sp, fontWeight = FontWeight.Bold)
-            Text("by SaferApps", fontSize = 24.sp, fontFamily = FontFamily.Cursive)
+            // Icono de Google
+            Box(
+                modifier = Modifier
+                    .size(24.dp)
+                    .background(Color.White),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.google_icon),
+                    contentDescription = "Google Logo",
+                    tint = Color.Unspecified,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+            Spacer(Modifier.width(12.dp))
+            Text(
+                "Continuar con Google",
+                fontWeight = FontWeight.Medium,
+                color = Color(0xFF1F1F1F),
+                fontSize = 16.sp
+            )
         }
     }
 }

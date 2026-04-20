@@ -118,6 +118,41 @@ class LoginController(
         _state.value = _state.value.copy(passwordVisible = !_state.value.passwordVisible)
     }
 
+    fun onGoogleSignIn(idToken: String) {
+        val role = _state.value.role
+        if (role == null) {
+            _state.value = _state.value.copy(
+                authError = true,
+                error = "Selecciona un tipo de usuario antes de continuar"
+            )
+            hideAuthErrorLater()
+            return
+        }
+
+        viewModelScope.launch {
+            try {
+                _state.value = _state.value.copy(loading = true)
+                val result = repository.signInWithGoogle(idToken, role)
+                session.loginUser(
+                    result.name,
+                    result.uid,
+                    result.role
+                )
+                _state.value = _state.value.copy(
+                    loading = false,
+                    loginSuccess = true
+                )
+            } catch (e: Exception) {
+                _state.value = _state.value.copy(
+                    loading = false,
+                    authError = true,
+                    error = "Error de autenticación. Verifique sus credenciales."
+                )
+                hideAuthErrorLater()
+            }
+        }
+    }
+
     fun onTermsClick(context: Context) {
         val intent = Intent(Intent.ACTION_VIEW, "https://cutt.ly/8yF2Ul7".toUri())
         context.startActivity(intent)
