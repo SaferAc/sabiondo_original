@@ -57,6 +57,7 @@ import com.saferapps.sabiondo.activity.MainActivity
 
 @Composable
 fun LoginScreen(
+    onNavigateToRegister: () -> Unit,
     controller: LoginController = viewModel(
         factory = LoginController.provideFactory(LocalContext.current)
     )
@@ -82,7 +83,7 @@ fun LoginScreen(
         addLink(
             LinkAnnotation.Clickable(
                 tag = "register",
-                linkInteractionListener = {}
+                linkInteractionListener = { onNavigateToRegister() }
             ),
             start = length,
             end = length + "Regístrate".length

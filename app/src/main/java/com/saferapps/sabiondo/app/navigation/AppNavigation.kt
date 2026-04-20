@@ -5,6 +5,7 @@ import androidx.navigation.compose.*
 import com.saferapps.sabiondo.activity.MainActivity
 import com.saferapps.sabiondo.app.screens.home.HomeScreen
 import com.saferapps.sabiondo.app.screens.login_screen.LoginScreen
+import com.saferapps.sabiondo.app.screens.register.RegisterScreen
 
 
 @Composable
@@ -15,7 +16,7 @@ fun AppNavigation() {
     NavHost(navController = nav, startDestination = "login") {
 
         composable("login") {
-            LoginScreen()
+            LoginScreen(onNavigateToRegister = { nav.navigate("register") })
         }
 
         composable("home") {
@@ -23,6 +24,9 @@ fun AppNavigation() {
         }
         composable("main") {
             MainActivity()
+        }
+        composable("register") {
+            RegisterScreen()
         }
     }
 }
