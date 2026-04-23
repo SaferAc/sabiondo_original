@@ -9,6 +9,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import android.util.Base64
+import androidx.credentials.CredentialManager
+import androidx.credentials.GetCredentialRequest
+import androidx.credentials.exceptions.GetCredentialException
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import java.security.SecureRandom
+import kotlinx.coroutines.CoroutineScope
 import androidx.core.net.toUri
 import com.saferapps.sabiondo.app.data.repository.AuthRepository
 import com.saferapps.sabiondo.helper.SessionHandler
@@ -114,8 +122,85 @@ class LoginController(
         _state.value = _state.value.copy(role = role)
     }
 
+    fun onForgotPassword() {
+        val email = _state.value.email
+        if (email.isBlank() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            _state.value = _state.value.copy(
+                authError = true,
+                error = "Ingresa un correo válido para restablecer tu contraseña"
+            )
+            hideAuthErrorLater()
+            return
+        }
+
+        viewModelScope.launch {
+            try {
+                _state.value = _state.value.copy(loading = true)
+                repository.sendPasswordResetEmail(email)
+                _state.value = _state.value.copy(
+                    loading = false,
+                    authError = true, // Usamos esto para mostrar el mensaje de éxito también
+                    error = "Se ha enviado un correo para restablecer tu contraseña"
+                )
+                hideAuthErrorLater()
+            } catch (e: Exception) {
+                _state.value = _state.value.copy(
+                    loading = false,
+                    authError = true,
+                    error = "Error: ${e.message}"
+                )
+                hideAuthErrorLater()
+            }
+        }
+    }
+
+    fun showError(message: String) {
+        _state.value = _state.value.copy(
+            authError = true,
+            error = message
+        )
+        hideAuthErrorLater()
+    }
+
     fun onPasswordVisible() {
         _state.value = _state.value.copy(passwordVisible = !_state.value.passwordVisible)
+    }
+
+    fun startGoogleSignIn(context: Context, scope: CoroutineScope) {
+        val credentialManager = CredentialManager.create(context)
+        val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
+            .setFilterByAuthorizedAccounts(false)
+            .setServerClientId("619175024507-lliblmqjs2cag9a6us5n472pntncvpor.apps.googleusercontent.com")
+            .setAutoSelectEnabled(true)
+            .setNonce(generateSecureRandomNonce())
+            .build()
+
+        val request: GetCredentialRequest = GetCredentialRequest.Builder()
+            .addCredentialOption(googleIdOption)
+            .build()
+
+        scope.launch {
+            try {
+                val result = credentialManager.getCredential(
+                    request = request,
+                    context = context,
+                )
+                val credential = result.credential
+                if (credential is GoogleIdTokenCredential) {
+                    onGoogleSignIn(credential.idToken)
+                }
+            } catch (e: GetCredentialException) {
+                showError("Error al conectar con Google: ${e.message}")
+            } catch (e: Exception) {
+                showError("Ocurrió un error inesperado")
+            }
+        }
+    }
+
+    private fun generateSecureRandomNonce(byteLength: Int = 32): String {
+        val randomBytes = ByteArray(byteLength)
+        SecureRandom().nextBytes(randomBytes)
+        return Base64.encodeToString(randomBytes, Base64.NO_WRAP or Base64.URL_SAFE or Base64.NO_PADDING)
     }
 
     fun onGoogleSignIn(idToken: String) {

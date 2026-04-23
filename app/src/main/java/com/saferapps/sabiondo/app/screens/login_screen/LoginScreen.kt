@@ -18,10 +18,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Visibility
@@ -48,6 +47,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -61,15 +61,10 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.saferapps.sabiondo.activity.MainActivity
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.compose.ui.res.painterResource
 import com.saferapps.sabiondo.R
+import com.saferapps.sabiondo.activity.MainActivity
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 
 @Composable
@@ -79,6 +74,8 @@ fun LoginScreen(
         factory = LoginController.provideFactory(LocalContext.current)
     )
 ) {
+
+
 
     val state by controller.state.collectAsState()
     val context = LocalContext.current
@@ -94,29 +91,7 @@ fun LoginScreen(
             }
     }
 
-    // Google Sign In Launcher
-    val googleSignInLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-        try {
-            val account = task.getResult(ApiException::class.java)
-            account.idToken?.let { idToken ->
-                controller.onGoogleSignIn(idToken)
-            }
-        } catch (e: ApiException) {
-            // Error handling
-        }
-    }
-
-    fun startGoogleSignIn() {
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken("619175024507-lliblmqjs2cag9a6us5n472pntncvpor.apps.googleusercontent.com")
-            .requestEmail()
-            .build()
-        val googleSignInClient = GoogleSignIn.getClient(context, gso)
-        googleSignInLauncher.launch(googleSignInClient.signInIntent)
-    }
+    val scope = rememberCoroutineScope()
 
 
     val text = buildAnnotatedString {
@@ -273,6 +248,18 @@ fun LoginScreen(
                                 isError = state.errorPasswordVisible
                             )
 
+                            Text(
+                                "Olvide mi contraseña",
+                                modifier = Modifier
+                                    .align(Alignment.End)
+                                    .padding(top = 8.dp)
+                                    .clickable { controller.onForgotPassword() },
+                                color = Color(0xFF448AFF),
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Bold,
+                                textDecoration = TextDecoration.Underline
+                            )
+
                             if (state.authError) {
                                 Text(
                                     state.error ?: "Error de autenticación. Verifique sus credenciales.",
@@ -330,32 +317,6 @@ fun LoginScreen(
                 )
 
                 Spacer(Modifier.height(30.dp))
-
-                Text(
-                    "Tipo de Usuario",
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    color = Color(0xFF546E7A),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold
-                )
-
-                Row(
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                ) {
-                    FilterChip(
-                        selected = state.role == "Docente",
-                        onClick = { controller.onRoleChange("Docente") },
-                        label = { Text("Docente", fontSize = 14.sp) }
-                    )
-                    Spacer(Modifier.width(8.dp))
-                    FilterChip(
-                        selected = state.role == "Estudiante",
-                        onClick = { controller.onRoleChange("Estudiante") },
-                        label = { Text("Estudiante", fontSize = 14.sp) }
-                    )
-                }
-
-                Spacer(Modifier.height(30.dp))
                 
                 Row(
                     modifier = Modifier
@@ -375,12 +336,40 @@ fun LoginScreen(
                 }
 
                 Spacer(Modifier.height(24.dp))
+
+                Text(
+                    "Tipo de Usuario",
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    color = Color(0xFF546E7A),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
+                Spacer(Modifier.height(8.dp))
+
+                Row(
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                ) {
+                    FilterChip(
+                        selected = state.role == "Docente",
+                        onClick = { controller.onRoleChange("Docente") },
+                        label = { Text("Docente", fontSize = 14.sp) }
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    FilterChip(
+                        selected = state.role == "Estudiante",
+                        onClick = { controller.onRoleChange("Estudiante") },
+                        label = { Text("Estudiante", fontSize = 14.sp) }
+                    )
+                }
+
+                Spacer(Modifier.height(24.dp))
                 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    SocialButton("Google") { startGoogleSignIn() }
+                    SocialButton("Google") { controller.startGoogleSignIn(context, scope) }
                 }
 
                 Spacer(Modifier.height(32.dp))

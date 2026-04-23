@@ -13,6 +13,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +44,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.saferapps.sabiondo.Constant;
 import com.saferapps.sabiondo.R;
+import com.saferapps.sabiondo.app.NewMainActivity;
 import com.saferapps.sabiondo.fragment.FragmentMainMenu;
 import com.saferapps.sabiondo.fragment.StadisticsFragment;
 import com.saferapps.sabiondo.helper.SessionHandler;
@@ -134,6 +136,47 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }, true
         );
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawers();
+                    return;
+                }
+
+                // Si no estamos en el Home, primero regresamos al Home
+                if (navItemIndex != 0) {
+                    navItemIndex = 0;
+                    CURRENT_TAG = TAG_HOME;
+                    loadHomeFragment();
+                    return;
+                }
+
+                // Si ya estamos en el Home, mostramos el diálogo de confirmación
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Confirmación")
+                        .setMessage("¿Deseas salir y reiniciar la aplicación?")
+                        .setCancelable(false)
+                        .setPositiveButton("Sí", (dialog, which) -> {
+                            // Borrar sesión local
+                            if (session != null) {
+                                session.logoutUser();
+                            }
+                            // Cerrar sesión en Firebase
+                            if (mAuth != null) {
+                                mAuth.signOut();
+                            }
+
+                            // Redirigir al punto de entrada (Splash/Navigation)
+                            Intent intent = new Intent(MainActivity.this, com.saferapps.sabiondo.app.NewMainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            finish();
+                        })
+                        .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                        .show();
+            }
+        });
     }
 
 
@@ -1143,29 +1186,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
     }
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawers();
-            return;
-        }
 
-        // This code loads home fragment when back key is pressed
-        // when user is in other fragment than home
-        boolean shouldLoadHomeFragOnBackPress = true;
-        if (shouldLoadHomeFragOnBackPress) {
-            // checking if user is on other navigation menu
-            // rather than home
-            if (navItemIndex != 0) {
-                navItemIndex = 0;
-                CURRENT_TAG = TAG_HOME;
-                loadHomeFragment();
-                return;
-            }
-        }
-
-        super.onBackPressed();
-    }
     private void signInSilently() {
         GoogleSignInOptions signInOptions = GoogleSignInOptions.DEFAULT_GAMES_SIGN_IN;
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);

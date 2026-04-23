@@ -92,4 +92,8 @@ class AuthRepository {
             role = userRole
         )
     }
+
+    suspend fun sendPasswordResetEmail(email: String) {
+        auth.sendPasswordResetEmail(email).await()
+    }
 }

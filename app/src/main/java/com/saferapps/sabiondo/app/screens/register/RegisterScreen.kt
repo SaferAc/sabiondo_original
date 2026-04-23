@@ -8,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -315,7 +316,7 @@ fun RegisterScreen(
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text("REGISTRAR", fontSize = 16.sp, fontWeight = FontWeight.ExtraBold)
                                 Spacer(Modifier.width(8.dp))
-                                Icon(Icons.Default.ArrowForward, null)
+                                Icon(Icons.AutoMirrored.Filled.ArrowForward, null)
                             }
                         }
                     }
